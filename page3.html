@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>The Sweetness | Store</title>
+        <meta name="description" content="This is the description">
+        <link rel="stylesheet" href="check.css" />
+     
+    </head>
+    <body>
+        <header class="main-header">
+            <nav class="main-nav nav">
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="page2.html">Candy&Arrangements🌸</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </nav>
+            <h1 class="band-name band-name-large">The Sweetness</h1>
+        </header>
+        <style>
+            .btn-primary {
+    font-family:Arial, sans-serif;
+    color: white;
+    background-color:rgb(190, 188, 252);
+    border: none;
+    border-radius: .3em;
+    font-weight: bold;
+}
+.btn-primary:hover {
+    background-color: rgb(86, 171, 211);
+}
+.btn-purchase {
+    font-family:Arial, sans-serif;
+    display: block;
+    margin: 40px auto 80px auto;
+    font-size: 1.75em;
+}  
+        </style>
+        <script>
+            // Defining a function to display error message
+            function printError(elemId, hintMsg) {
+                document.getElementById(elemId).innerHTML = hintMsg;
+            }
+            
+            // Defining a function to validate form 
+            function validateForm() {
+                // Retrieving the values of form elements 
+                var name = document.contactForm.name.value;
+                var email = document.contactForm.email.value;
+                var mobile = document.contactForm.mobile.value;
+                var country = document.contactForm.country.value;
+                var gender = document.contactForm.gender.value;
+                var hobbies = [];
+                var checkboxes = document.getElementsByName("hobbies[]");
+            }
+                for(var i=0; i < checkboxes.length; i++) {
+                    if(checkboxes[i].checked) {
+                        // Populate hobbies array with selected values
+                        hobbies.push(checkboxes[i].value);
+                    }
+                }
+                
+                // Defining error variables with a default value
+                var nameErr = emailErr = mobileErr = countryErr = genderErr = true;
+                
+                // Validate name
+                if(name == "") {
+                    printError("nameErr", "Please enter your name");
+                } else {
+                    var regex = /^[a-zA-Z\s]+$/;                
+                    if(regex.test(name) === false) {
+                        printError("nameErr", "Please enter a valid name");
+                    } else {
+                        printError("nameErr", "");
+                        nameErr = false;
+                    }
+                }
+                
+                // Validate email address
+                if(email == "") {
+                    printError("emailErr", "Please enter your email address");
+                } else {
+                    // Regular expression for basic email validation
+                    var regex = /^\S+@\S+\.\S+$/;
+                    if(regex.test(email) === false) {
+                        printError("emailErr", "Please enter a valid email address");
+                    } else{
+                        printError("emailErr", "");
+                        emailErr = false;
+                    }
+                }
+                
+                // Validate mobile number
+                if(mobile == "") {
+                    printError("mobileErr", "Please enter your mobile number");
+                } else {
+                    var regex = /^[1-9]\d{9}$/;
+                    if(regex.test(mobile) === false) {
+                        printError("mobileErr", "Please enter a valid 10 digit mobile number");
+                    } else{
+                        printError("mobileErr", "");
+                        mobileErr = false;
+                    }
+                }
+            </script>
+            </head>
+            <body>
+            <form name="contactForm" onsubmit="return validateForm()" action="/examples/actions/confirmation.php" method="post">
+                <h2>Application Form</h2>
+                <div class="row">
+                    <label>Full Name</label>
+                    <input type="text" name="name">
+                    <div class="error" id="nameErr"></div>
+                </div>
+                <div class="row">
+                    <label>Email Address</label>
+                    <input type="text" name="email">
+                    <div class="error" id="emailErr"></div>
+                </div>
+                <div class="row">
+                    <label>Mobile Number</label>
+                    <input type="text" name="mobile" maxlength="10">
+                    <div class="error" id="mobileErr"></div>
+                </div>
+                <div class="row">
+                    <label>Delivery Address </label>
+                    <input type="text" name="address">
+                    <div class="error" id="addressErr"></div>
+                </div>
+                <div class="row">
+                    <label>Card Number</label>
+                    <input type="text" name="number" maxlength="16" minlength="16">
+                    <div class="error" id="numberErr"></div>
+                </div>
+                <div class="row">
+                    <label>CVV</label>
+                    <input type="text" name="CVV" maxlength="3" minlength="3">
+                    <div class="error" id="CVVErr"></div>
+                </div>
+                <div class="row">
+                    <label>*Additional INFO*</label>
+                    <div class="form-inline">
+                        <label><input type="radio" name="bill" value="bil"> I use the same address for billing.</label>
+                    </div>
+                    <button class="btn btn-primary btn-purchase" type="button"><a href="thank.html"> PURCHASE </a></button>
+            </form>
+            </body>
+            </html>
