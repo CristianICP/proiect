@@ -37,14 +37,10 @@
 }  
         </style>
         <script>
-            // Defining a function to display error message
             function printError(elemId, hintMsg) {
                 document.getElementById(elemId).innerHTML = hintMsg;
             }
-            
-            // Defining a function to validate form 
             function validateForm() {
-                // Retrieving the values of form elements 
                 var name = document.contactForm.name.value;
                 var email = document.contactForm.email.value;
                 var mobile = document.contactForm.mobile.value;
@@ -55,15 +51,10 @@
             }
                 for(var i=0; i < checkboxes.length; i++) {
                     if(checkboxes[i].checked) {
-                        // Populate hobbies array with selected values
                         hobbies.push(checkboxes[i].value);
                     }
                 }
-                
-                // Defining error variables with a default value
                 var nameErr = emailErr = mobileErr = countryErr = genderErr = true;
-                
-                // Validate name
                 if(name == "") {
                     printError("nameErr", "Please enter your name");
                 } else {
@@ -75,12 +66,9 @@
                         nameErr = false;
                     }
                 }
-                
-                // Validate email address
                 if(email == "") {
                     printError("emailErr", "Please enter your email address");
                 } else {
-                    // Regular expression for basic email validation
                     var regex = /^\S+@\S+\.\S+$/;
                     if(regex.test(email) === false) {
                         printError("emailErr", "Please enter a valid email address");
@@ -89,8 +77,6 @@
                         emailErr = false;
                     }
                 }
-                
-                // Validate mobile number
                 if(mobile == "") {
                     printError("mobileErr", "Please enter your mobile number");
                 } else {
